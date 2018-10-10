@@ -69,14 +69,35 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Users\Vadim\Documents\Visual Studio 2017\Projects\MajesticLords\Dependencies\Includes;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Vadim\Documents\Visual Studio 2017\Projects\MajesticLords\Dependencies\Lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>C:\Users\Vadim\Documents\Visual Studio 2017\Projects\MajesticLords\Dependencies\Includes;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Vadim\Documents\Visual Studio 2017\Projects\MajesticLords\Dependencies\Lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\Users\Vadim\Documents\Visual Studio 2017\Projects\MajesticLords\Dependencies\Includes;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Vadim\Documents\Visual Studio 2017\Projects\MajesticLords\Dependencies\Lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>C:\Users\Vadim\Documents\Visual Studio 2017\Projects\MajesticLords\Dependencies\Includes;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Vadim\Documents\Visual Studio 2017\Projects\MajesticLords\Dependencies\Lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>UninitializedLocalUsageCheck</BasicRuntimeChecks>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;freetype.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -84,7 +105,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>UninitializedLocalUsageCheck</BasicRuntimeChecks>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;freetype.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -94,10 +121,20 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <StringPooling>
+      </StringPooling>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;FreeImage.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -108,13 +145,80 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <StringPooling>
+      </StringPooling>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;FreeImage.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BatchRenderer2D.cpp" />
+    <ClCompile Include="buffer.cpp" />
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FontLayer.cpp" />
+    <ClCompile Include="FontRenderer2D.cpp" />
+    <ClCompile Include="group.cpp" />
+    <ClCompile Include="indexbuffer.cpp" />
+    <ClCompile Include="label.cpp" />
+    <ClCompile Include="layer.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mat4.cpp" />
+    <ClCompile Include="simple2drenderer.cpp" />
+    <ClCompile Include="shader.cpp" />
+    <ClCompile Include="sprite.cpp" />
+    <ClCompile Include="static_sprite.cpp" />
+    <ClCompile Include="texture.cpp" />
+    <ClCompile Include="tilelayer.cpp" />
+    <ClCompile Include="vec2.cpp" />
+    <ClCompile Include="vec3.cpp" />
+    <ClCompile Include="vec4.cpp" />
+    <ClCompile Include="vertexarray.cpp" />
+    <ClCompile Include="window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BatchRenderer2D.h" />
+    <ClInclude Include="fileutils.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="FontLayer.h" />
+    <ClInclude Include="FontRenderer2D.h" />
+    <ClInclude Include="group.h" />
+    <ClInclude Include="ImageLoad.h" />
+    <ClInclude Include="indexbuffer.h" />
+    <ClInclude Include="label.h" />
+    <ClInclude Include="layer.h" />
+    <ClInclude Include="mat4.h" />
+    <ClInclude Include="maths.h" />
+    <ClInclude Include="renderable2d.h" />
+    <ClInclude Include="renderer2d.h" />
+    <ClInclude Include="shader.h" />
+    <ClInclude Include="simple2drenderer.h" />
+    <ClInclude Include="sprite.h" />
+    <ClInclude Include="static_sprite.h" />
+    <ClInclude Include="texture.h" />
+    <ClInclude Include="tilelayer.h" />
+    <ClInclude Include="timer.h" />
+    <ClInclude Include="vec2.h" />
+    <ClInclude Include="vec3.h" />
+    <ClInclude Include="vec4.h" />
+    <ClInclude Include="buffer.h" />
+    <ClInclude Include="vertexarray.h" />
+    <ClInclude Include="window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="basic.frag" />
+    <None Include="basic.vert" />
+    <None Include="font.frag" />
+    <None Include="font.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
